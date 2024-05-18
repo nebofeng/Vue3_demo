@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    
+    <title>vue学习</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Import style -->
+  <link rel="stylesheet" href="https://unpkg.com/element-plus@2.4.1/dist/index.css" />
+  <!-- Import Vue 3 -->
+
+  <!-- Import component library -->
+  <script src="https://unpkg.com/element-plus@2.4.1/dist/index.full.js"></script>
+
+
+    <style>
+        :root{
+            font-size: 13px;
+        }
+        body{
+            padding: 8px;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    
+   <div id="app">
+     
+    
+       
+    <el-form :inline="true"  class="demo-form-inline" @submit.prevent>
+        <el-form-item >
+             <div class="label_cus"> 品牌信息 </div>
+             <el-input v-model="brandname" />
+          </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">添加</el-button>
+        </el-form-item>
+    </el-form>
+
+
+ 
+     
+      <el-table  stripe  :data="brandlist" >
+        <el-table-column prop="id" label="#"  width="180" /> </el-table-column>
+        <el-table-column prop="brandname" label="品牌名称"  width="180" /> </el-table-column>
+        
+        <el-table-column prop="state" label="状态" width="180" >
+          <template #default="scope">
+              <el-switch v-model="scope.row.state" />  
+              <label  :for="item.id" v-if="scope.row.state">已启用</label>
+               <label  :for="item.id" v-else>已禁用</label>
+          </template>
+      </el-table-column>>
+      <el-table-column prop="addtime"   label="创建时间" >
+        <template #default="scope">
+            {{dateFormat(scope.row.addtime)}}  
+        </template>    
+      </el-table-column>
+        <el-table-column  label="操作" width="180">
+            <template #default="scope">
+                <a href="#" @click.prevent="removeBrand(scope.row.id)">删除</a>
+            </template>     
+        </el-table-column>
+    
+      </el-table>
+
+  </div>
+   
+
+   <script type="application/javascript">
+   
+  
+     const { createApp } = Vue
+     const app = createApp({
+        data(){
+            return {
+                brandname: '',
+                nextId: 4,
+                brandlist: [
+                    { id: 1, brandname: '宝马', state: true, addtime: new Date() },
+                    { id: 2, brandname: '奥迪', state: false, addtime: new Date() },
+                    { id: 3, brandname: '奔驰', state: true, addtime: new Date() },
+                ]
+            }
+        },
+        methods: {
+            onSubmit(){
+                console.log("onsubmit")
+                this.brandlist.push({id:this.nextId,brandname:this.brandname,state:true,addtime: new Date()}) 
+                this.nextId++;
+                brandname="";
+            },
+            removeBrand(id){
+                this.brandlist = this.brandlist.filter((x) => x.id !== id)
+            },
+            padZero(n) {
+                return n > 9 ? n : '0' + n
+            }
+        },   
+        computed: {
+            /*
+            计算属性是一个属性，不是一个方法，需要这样写 //使用函数返回
+            */
+            dateFormat:function(){
+				return function(dateStr){			
+					const dt = new Date(dateStr)
+                    const y = dt.getFullYear()
+                    const m = this.padZero(dt.getMonth() + 1)
+                    const d = this.padZero(dt.getDate())
+
+                    const hh = this.padZero(dt.getHours())
+                    const mm = this.padZero(dt.getMinutes())
+                    const ss = this.padZero(dt.getSeconds())
+                    return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
+				}
+  
+            }
+        }
+
+
+
+    })
+     
+    app.use(ElementPlus);
+    app.mount("#app");
+   </script>
+   <style>
+
+    .demo-form-inline .el-input {
+        --el-input-width: 220px;
+    }
+
+    .label_cus {
+      margin-right: 10px;
+      border-radius: 2px;
+     
+    }
+   </style>
+</body>
+
+
+
+</html>
