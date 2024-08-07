@@ -4,7 +4,7 @@
 
 案例demo归档文件夹，主要使用vue3+element-plus实现效果
 
-### [table表格案例](https://github.com/nebofeng/Vue3_demo/blob/master/day03/demo)
+### [table表格案例](https://github.com/nebofeng/Vue3_demo/tree/master/01-tabledemo/demo)
 
 <details>
 <summary>详情</summary>
