@@ -1,15 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+  
+  <div class="app-container">
+  <Header title="购物车"></Header>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header
   }
 }
 </script>
+<style>
+.app-container {
+ 
+  padding-top: 45px;
+  padding-bottom: 50px;
+}
+</style>
