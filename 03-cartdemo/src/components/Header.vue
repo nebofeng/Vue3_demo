@@ -38,12 +38,14 @@
 
 <style>
 .main {
- position: fixed;
- line-height: 45px;
- z-index: 9999;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 45px;
+  text-align: center;
+  line-height: 45px;
+  z-index: 999;
 
 
 }
