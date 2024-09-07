@@ -2,12 +2,22 @@
   
   <div class="app-container">
   <Header title="购物车"></Header>
+  <Goods v-for="item in goodslist"
+    :key="item.goods_id"
+    :id="item.goods_id"
+    :thumb="item.goods_img"
+    :title="item.goods_name"
+    :price="item.goods_price"
+    :count="item.goods_count"
+    >
+  </Goods>
   <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue';
+import Goods from './components/Goods.vue';
 import Footer  from './components/Footer.vue';
 
 export default {
@@ -22,31 +32,12 @@ export default {
     this.getGoodsList()
   },
   methods: {
-    // 获取商品列表数据的方法
-    async getGoodsList() {
-      const { data: res } = await this.$http.get('/api/cart')
-      if (res.status !== 200) return alert('数据请求失败！')
-      this.goodslist = res.list
-    },
-    // 监听选中状态变化的事件
-    onFullStateChange(isFull) {
-      // console.log(isFull)
-      this.goodslist.forEach(x => (x.goods_state = isFull))
-    },
-    // 监听商品勾选状态变化的事件
-    onGoodsStateChange(e) {
-      const findResult = this.goodslist.find(x => x.goods_id === e.goods_id)
-      if (findResult) {
-        findResult.goods_state = e.value
-      }
-    },
-    // 监听商品数量变化的事件
-    onGoodsCountChange(e) {
-      const findResult = this.goodslist.find(x => x.goods_id === e.goods_id)
-      if (findResult) {
-        findResult.goods_count = e.value
-      }
-    },
+    async getGoodsList(){
+        const { data:res } =  await this.$http.get("/api/cart")
+        if (res.status !== 200) return alert('数据请求失败！')
+        this.goodslist=res.list
+    }
+   
   },
   computed: {
     // 已勾选商品的总价格
@@ -74,6 +65,7 @@ export default {
   components: {
     Header,
     Footer,
+    Goods
   
   }
 }
