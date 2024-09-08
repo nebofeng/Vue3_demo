@@ -2,7 +2,7 @@
     <div class="goods-container">
         <div class="left">
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" :id="id" :checked="checked" />
+                <input type="checkbox" class="custom-control-input" :id="id" :checked="checked" @change="checkboxChange" />
                 <label class="custom-control-label" :for="id">
                     <img :src="thumb" alt="商品图片"  class="thumb">
                 </label>
@@ -12,9 +12,7 @@
             <div class="top">  {{title}}  </div>
             <div class="bottom">
                 <div class="price">￥{{ price.toFixed(2) }}</div>
-                <!-- <div class="counter">
-                    <Counter></Counter>
-                </div> -->
+                <Counter :num="count"  @numChange="getNumber"></Counter>
                 
             </div>
         </div>
@@ -53,13 +51,33 @@ import Counter from './Counter.vue';
 
         },
         checked:{
-            type:[Boolean],
+            type:Boolean,
             Required:false,
-            default:true
+            default:false
         }
     },
     components: {
         Counter,
+    },
+    emits:["stateChange","countChange"],
+    methods:{
+        getNumber(num){
+            //console.log("num ===="+ num)
+           
+            this.$emit("countChange",{
+                id: this.id,
+                value: num
+            })
+
+        },
+        //点击事件
+        checkboxChange(e){
+            this.$emit('stateChange',{
+                id: this.id,
+                value: e.target.checked
+            })
+        }
+
     }
 
  }

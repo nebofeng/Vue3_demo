@@ -4,13 +4,13 @@
     <div class="footer-container">
       <!-- 全选区域 -->
       <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="fullCheck" :checked="isfull" @change="onCheckBoxChange" />
+        <input type="checkbox" class="custom-control-input" id="fullCheck" :checked="isfull"  @change="fullCheckChange" />
         <label class="custom-control-label" for="fullCheck">全选</label>
       </div>
   
       <!-- 合计区域 -->
       <div>
-        <span>合计：</span>
+        <span>合计：￥{{ amount.toFixed(2) }}</span>
         <span class="amount"></span>
       </div>
   
@@ -25,7 +25,40 @@
 
 <script>
  export default{
-    name:'Footer'
+    name:'Footer',
+    emits:["fullCheck"],
+    props:{
+       amount:{
+          type:Number,
+          default:0,
+       },
+       total:{
+           type:Number,
+           default:0
+       },
+       isfull:{
+          type:Boolean,
+          default: false
+       }
+
+    },
+    data(){
+      return {
+         isfull: false
+      }
+    },
+    methods:{
+      fullCheckChange(e){
+          this.isfull = !this.isfull
+          this.$emit('fullCheck',{
+            value: this.isfull
+          }
+          )
+
+      }
+
+    }
+
 
 
  }

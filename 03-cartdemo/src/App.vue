@@ -9,9 +9,11 @@
     :title="item.goods_name"
     :price="item.goods_price"
     :count="item.goods_count"
-    >
+     :checked="item.goods_state"
+      @stateChange="onGoodsStateChange"
+      @countChange="onGoodsCountChange">
   </Goods>
-  <Footer></Footer>
+  <Footer  :amount="amount" :total="total" @fullCheck="onFullCheck"></Footer>
   </div>
 </template>
 
@@ -26,6 +28,7 @@ export default {
     return {
       // 商品列表的数据
       goodslist: [],
+     
     }
   },
   created() {
@@ -36,7 +39,30 @@ export default {
         const { data:res } =  await this.$http.get("/api/cart")
         if (res.status !== 200) return alert('数据请求失败！')
         this.goodslist=res.list
+    },
+    onGoodsCountChange(e){
+      //根据子组件传递过来的 id，查找对应的 item
+      const findResult = this.goodslist.find(x => x.goods_id == e.id)
+      if (findResult) {
+         findResult.goods_count = e.value
+      }
+
+    },
+    onGoodsStateChange(e){
+      //根据子组件传递过来的 id，查找对应的 item
+      const findResult = this.goodslist.find(x => x.goods_id == e.id)
+      if (findResult) {
+        findResult.goods_state = e.checked
+      }
+    },
+    onFullCheck(e){
+        const fullChecked = e.value;
+        this.goodslist.forEach(
+           x=> x.goods_state = fullChecked
+        )
+
     }
+
    
   },
   computed: {
