@@ -23,4 +23,38 @@
 - 常见指令的基本用法：插值表达式、v-bind、v-on、v-if 和 v-else、 v-for 和 :key、v-model
 - 使用computed 属性替代过滤器
 
+####  效果
+![](http://nextcloud.nebofeng.com/s/Dt4oWG5r5Q33feM/preview)
+</details>
+
+
+### [todolist案例](https://github.com/nebofeng/Vue3_demo/tree/master/02-todolist)
+
+<details>
+<summary>详情</summary>
+
+
+#### 用到的知识点
+
+- vue+element-plus实现基本页面
+
+#### 效果
+
+![](https://nextcloud.nebofeng.com/s/KiWcEygfd5z3P7N/preview)
+
+
+
+</details>
+
+### [购物车案例](https://github.com/nebofeng/Vue3_demo/tree/master/02-todolist)
+
+<details>
+<summary>详情</summary>
+
+#### 用到的知识点
+- 使用bootstrap实现页面
+- 主要用到了父子节点传值
+
+#### 效果
+![](http://nextcloud.nebofeng.com/s/WJ2ENLD655595LC/preview)
 </details>

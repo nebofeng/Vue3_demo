@@ -1,8 +1,8 @@
 <template>
     <div class="counter-container">
         <button type="button" class="btn btn-light btn-sm" @click="reduceCount" >-</button>
-        <!-- 输入框 -->
-        <input type="number" class="form-control form-control-sm ipt-num"  min="0" max="999" v-model="number" />
+        <!-- 输入框   v-model.number.lazy number校验-->
+        <input type="number" class="form-control form-control-sm ipt-num"  min="0" max="999"  v-model.number.lazy="number" />
         <!-- 数量 +1 按钮 -->
         <button type="button" class="btn btn-light btn-sm"  @click="addCount" >+</button>
 
