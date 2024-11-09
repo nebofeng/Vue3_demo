@@ -37,6 +37,12 @@ export default {
   .home-main {
     display: flex;
     flex-direction: row;
+
+    .home-main-context {
+      width: 100%;
+      padding: 15px;
+      flex: 1;
+    }
   }
 
 }
