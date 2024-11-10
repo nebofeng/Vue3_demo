@@ -4,7 +4,7 @@
 
 案例demo归档文件夹，主要使用vue3+element-plus实现效果
 
-### [table表格案例](https://github.com/nebofeng/Vue3_demo/tree/master/01-tabledemo/demo)
+### [01-table表格案例](https://github.com/nebofeng/Vue3_demo/tree/master/01-tabledemo/demo)
 
 <details>
 <summary>详情</summary>
@@ -28,7 +28,7 @@
 </details>
 
 
-### [todolist案例](https://github.com/nebofeng/Vue3_demo/tree/master/02-todolist)
+### [02-todolist案例](https://github.com/nebofeng/Vue3_demo/tree/master/02-todolist)
 
 <details>
 <summary>详情</summary>
@@ -46,7 +46,7 @@
 
 </details>
 
-### [购物车案例](https://github.com/nebofeng/Vue3_demo/tree/master/02-todolist)
+### [03-购物车案例](https://github.com/nebofeng/Vue3_demo/tree/master/03-cartdemo)
 
 <details>
 <summary>详情</summary>
@@ -57,4 +57,19 @@
 
 #### 效果
 ![](http://nextcloud.nebofeng.com/s/WJ2ENLD655595LC/preview)
+</details>
+
+### [04-路由案例](https://github.com/nebofeng/Vue3_demo/tree/master/04-vue-router)
+
+<details>
+<summary>详情</summary>
+
+#### 用到的知识点
+- 嵌套路由、动态路由相关
+
+
+#### 效果
+
+![](http://nextcloud.nebofeng.com/s/R4gneWsKDpoXaiK/preview)
+![](http://nextcloud.nebofeng.com/s/Ea6R7DWTomQwPRy/preview)
 </details>
